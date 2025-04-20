@@ -92,8 +92,8 @@ Built with 💻 by Suraj kumar singh
 📷 Sample Output
 
 Real-time face recognition from webcam:
-
-
+![alt text](image.png)
+![alt text](image-1.png)
 
 📚 References
 
@@ -102,5 +102,7 @@ OpenFace Model
 OpenCV DNN Face Detector
 
 SSD Model: res10_300x300_ssd_iter_140000.caffemodel
+
+
 
 
