@@ -1,44 +1,106 @@
-# Face Recognition using OpenCV
- - Create dataset of face images
- - - Detect faces using ```deploy.prototxt``` and ```res10_300x300_ssd_iter_140000.caffemodel```. (Learn more about [face detection](https://github.com/aakashjhawar/face-detection))
- - Extract face embeddings for each face present in the image using pretrained [OpenFace](https://cmusatyalab.github.io/openface/) model ```openface_nn4.small2.v1.t7```. 
- - Train a SVM model on the face embeddings to recognize faces 
+Face Recognition System using OpenCV and Deep Learning
 
-## Overview of OpenFace for a single input image
-1. Detect faces with a pre-trained models from dlib or OpenCV.
-2. Transform the face for the neural network. This repository uses dlib's real-time pose estimation with OpenCV's affine transformation to try to make the eyes and bottom lip appear in the same location on each image.
-3. Use a deep neural network to represent (or embed) the face on a 128-dimensional unit hypersphere. The embedding is a generic representation for anybody's face. Unlike other face representations, this embedding has the nice property that a larger distance between two face embeddings means that the faces are likely not of the same person. This property makes clustering, similarity detection, and classification tasks easier than other face recognition techniques where the Euclidean distance between features is not meaningful.
-4. Apply clustering or classification techniques to the features to complete the face recognition task.
+This project demonstrates a complete face recognition pipeline using OpenCV and deep learning-based models. The pipeline includes face detection, face embedding generation using the OpenFace model, and classification using an SVM.
 
-*Read more about [OpenFace](https://cmusatyalab.github.io/openface/)*
-![Working of OpenCV Face detector](https://github.com/aakashjhawar/face-recognition-using-opencv/blob/master/images/openface.jpg)
+Built with 💻 by Suraj kumar singh
 
-## Getting Started
-How to use
-```    
-git clone https://github.com/aakashjhawar/face-recognition-using-opencv
-cd face-recognition-using-opencv
-```
- - Create dataset of face images.
- - Place the face images in dataset folder.
- - Extract facial embeddings.
-```python extract_embeddings.py```
- - Train the SVM model
-```python train_model.py```
- - Test the model
-```python recognize_video.py```
+🔍 Project Highlights
 
-## Prerequisites
+      *****  Detect faces in real-time using a pre-trained SSD model (res10_300x300_ssd_iter_140000.caffemodel)
 
-- Python 3.5
-- OpenCV
-```
-sudo apt-get install python-opencv
-```
+      *****  Generate 128D facial embeddings using the OpenFace deep neural network
 
-## Results 
+      *****  Train a Support Vector Machine (SVM) to classify faces based on embeddings
 
-#### Detect and recognize faces from video camera-
-![Result](https://github.com/aakashjhawar/face-recognition-using-opencv/blob/master/images/output1.png)
+      *****  Recognize faces in live video stream from webcam
+
+📌 Workflow
+
+        1. Face Detection
+
+                Utilize OpenCV’s DNN module with Caffe model files:
+
+                deploy.prototxt
+
+        2. Face Embedding
+
+                Extract high-level facial features using OpenFace model:openface_nn4.small2.v1.t7
+
+       3. Model Training
+
+                Train an SVM classifier on extracted facial embeddings
+
+        4. Real-time Recognition
+
+                 Use a webcam feed to recognize faces based on the trained model
+
+🧠 How It Works
+
+  ****  Face DetectionOpenCV DNN loads a pre-trained face detector to identify face regions.
+
+        Face Alignment (Optional)Align faces to normalize input using facial landmarks.
+
+        Embedding GenerationThe OpenFace network maps each face to a 128-dimensional vector representation.
+
+        ClassificationA trained SVM uses these vectors to classify or recognize known individuals.****
+
+🚀 Getting Started
+
+        1. Clone the Repository
+
+            git clone https://github.com/surajkumarsingh03/Face-Detection-system
+            cd Face-Detection-system
+
+        2. Prepare Dataset
+
+            Create a directory named dataset
+
+            Add images of individuals you want to train the system on
+
+            Subdirectories should be named after the person (e.g., dataset/name/)
+
+        3.Extract Embeddings
+
+            python extract_embeddings.py
+
+        4.Train the Classifier
+
+            python train_model.py
+
+        5.Test on Live Video
+
+            python recognize_video.py
+
+📦 Requirements
+
+        Python 3.5+
+
+        OpenCV (with cv2.dnn)
+
+        NumPy
+
+        Scikit-learn
+
+        Install Dependencies
+
+        pip install opencv-python numpy scikit-learn
+
+        Or on Ubuntu:
+
+        sudo apt-get install python3-opencv
+
+📷 Sample Output
+
+Real-time face recognition from webcam:
+
+
+
+📚 References
+
+OpenFace Model
+
+OpenCV DNN Face Detector
+
+SSD Model: res10_300x300_ssd_iter_140000.caffemodel
 
 
